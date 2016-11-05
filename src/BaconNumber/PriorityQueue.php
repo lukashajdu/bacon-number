@@ -7,7 +7,7 @@ use SplPriorityQueue;
 /**
  * Priority Queue
  *
- * Implementation of a heap
+ * Implementation of a min-heap
  *
  * @author Lukas Hajdu <hello@lukashajdu.com>
  * @copyright Lukas Hajdu <http://lukashajdu.com>, 2016
