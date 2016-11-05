@@ -38,7 +38,7 @@ class GraphTest extends TestCase
     }
 
     /**
-     * @covers \BaconNumber\Graph::shortestPath
+     * @covers \BaconNumber\Graph::getShortestDistance
      */
     public function testShortestPath()
     {
@@ -68,18 +68,18 @@ class GraphTest extends TestCase
         $graph->addVertex($vertexG);
         $graph->addVertex($vertexH);
 
-        $this->assertEquals(2, $graph->shortestPath($vertexA, $vertexC));
-        $this->assertEquals(1, $graph->shortestPath($vertexA, $vertexD));
-        $this->assertEquals(0, $graph->shortestPath($vertexA, $vertexA));
-        $this->assertEquals(3, $graph->shortestPath($vertexA, $vertexE));
-        $this->assertEquals(3, $graph->shortestPath($vertexB, $vertexG));
-        $this->assertEquals(4, $graph->shortestPath($vertexA, $vertexH));
-        $this->assertEquals(3, $graph->shortestPath($vertexC, $vertexH));
-        $this->assertEquals(2, $graph->shortestPath($vertexD, $vertexB));
+        $this->assertEquals(2, $graph->getShortestDistance($vertexA, $vertexC));
+        $this->assertEquals(1, $graph->getShortestDistance($vertexA, $vertexD));
+        $this->assertEquals(0, $graph->getShortestDistance($vertexA, $vertexA));
+        $this->assertEquals(3, $graph->getShortestDistance($vertexA, $vertexE));
+        $this->assertEquals(3, $graph->getShortestDistance($vertexB, $vertexG));
+        $this->assertEquals(4, $graph->getShortestDistance($vertexA, $vertexH));
+        $this->assertEquals(3, $graph->getShortestDistance($vertexC, $vertexH));
+        $this->assertEquals(2, $graph->getShortestDistance($vertexD, $vertexB));
     }
 
     /**
-     * @covers \BaconNumber\Graph::shortestPath
+     * @covers \BaconNumber\Graph::getShortestDistance
      */
     public function testMissingEdge()
     {
@@ -98,12 +98,12 @@ class GraphTest extends TestCase
 
         $this->assertEquals(
             Graph::INFINITE,
-            $graph->shortestPath($vertexA, $vertexC)
+            $graph->getShortestDistance($vertexA, $vertexC)
         );
     }
 
     /**
-     * @covers \BaconNumber\Graph::shortestPath
+     * @covers \BaconNumber\Graph::getShortestDistance
      */
     public function testShortestPathException()
     {
@@ -119,10 +119,10 @@ class GraphTest extends TestCase
         $graph->addVertex($vertexA);
         $graph->addVertex($vertexB);
 
-        $this->assertEquals(1, $graph->shortestPath($vertexA, $vertexB));
+        $this->assertEquals(1, $graph->getShortestDistance($vertexA, $vertexB));
 
         $this->expectException(\Exception::class);
-        $graph->shortestPath($vertexA, $vertexC);
+        $graph->getShortestDistance($vertexA, $vertexC);
     }
 
     /**

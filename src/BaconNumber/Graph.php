@@ -66,7 +66,7 @@ class Graph
      * @return int
      * @throws UnsetVertexException
      */
-    public function shortestPath(
+    public function getShortestDistance(
         VertexInterface $start,
         VertexInterface $finish
     ): int {
