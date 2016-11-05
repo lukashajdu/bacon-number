@@ -36,6 +36,17 @@ class VertexTest extends TestCase
     }
 
     /**
+     * @covers \BaconNumber\Vertex::setDistance
+     * @covers \BaconNumber\Vertex::getDistance
+     */
+    public function testSetDistance()
+    {
+        $vertex = new Vertex('A');
+        $vertex->setDistance(10);
+        $this->assertEquals(10, $vertex->getDistance());
+    }
+
+    /**
      * @covers \BaconNumber\Vertex::equals
      */
     public function testEquals()
@@ -46,5 +57,23 @@ class VertexTest extends TestCase
 
         $this->assertTrue($vertex1->equals($vertex2));
         $this->assertFalse($vertex2->equals($vertex3));
+    }
+
+    /**
+     * @covers \BaconNumber\Vertex::getEdges
+     * @covers \BaconNumber\Vertex::addEdge
+     */
+    public function testAddEdge()
+    {
+        $vertexA = new Vertex('A');
+        $vertexB = new Vertex('B');
+        $vertexC = new Vertex('C');
+
+        $collection = new VertexCollection();
+        $collection->add($vertexB);
+        $collection->add($vertexC);
+
+        $vertexA->addEdge($vertexB)->addEdge($vertexC);
+        $this->assertEquals($collection, $vertexA->getEdges());
     }
 }
